@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NGO Dashboard - Food Donation Platform</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f8ff;
+            color: #222;
+        }
+
+        /* Header */
+        header {
+            background: #2457a6;
+            color: white;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            font-size: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Welcome */
+        .welcome {
+            text-align: center;
+            padding: 35px 20px 20px;
+        }
+
+        .welcome h2 {
+            color: #2457a6;
+            margin-bottom: 8px;
+        }
+
+        .welcome p {
+            color: #666;
+        }
+
+        /* Statistics */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .stat-card {
+            width: 210px;
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-card .icon {
+            font-size: 35px;
+        }
+
+        .stat-card h3 {
+            color: #2457a6;
+            font-size: 28px;
+            margin: 8px 0;
+        }
+
+        .stat-card p {
+            color: #666;
+        }
+
+        /* Section */
+        .section {
+            padding: 30px 20px;
+        }
+
+        .section h2 {
+            text-align: center;
+            color: #2457a6;
+            margin-bottom: 25px;
+        }
+
+        /* Action Cards */
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 280px;
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .card .icon {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            color: #2457a6;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #2457a6;
+            color: white;
+            padding: 11px 20px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #183d78;
+        }
+
+        /* Donation Table */
+        .table-container {
+            max-width: 1050px;
+            margin: auto;
+            overflow-x: auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 14px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #2457a6;
+            color: white;
+        }
+
+        .accept {
+            background: #087f5b;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .accept:hover {
+            background: #055f45;
+        }
+
+        .status {
+            color: #2457a6;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #2457a6;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                justify-content: center;
+                text-align: center;
+                gap: 15px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .stat-card,
+            .card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <h1>🤝 NGO Dashboard</h1>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="donor-dashboard.html">Donors</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Logout</a>
+    </nav>
+
+</header>
+
+
+<!-- WELCOME -->
+
+<section class="welcome">
+
+    <h2>Welcome, NGO! 👋</h2>
+
+    <p>
+        Manage food donations and help distribute food to people in need.
+    </p>
+
+</section>
+
+
+<!-- STATISTICS -->
+
+<section class="stats">
+
+    <div class="stat-card">
+        <div class="icon">🍱</div>
+        <h3>12</h3>
+        <p>Available Donations</p>
+    </div>
+
+    <div class="stat-card">
+        <div class="icon">📦</div>
+        <h3>8</h3>
+        <p>Collected Donations</p>
+    </div>
+
+    <div class="stat-card">
+        <div class="icon">🚚</div>
+        <h3>5</h3>
+        <p>Pending Pickups</p>
+    </div>
+
+    <div class="stat-card">
+        <div class="icon">❤️</div>
+        <h3>120</h3>
+        <p>People Helped</p>
+    </div>
+
+</section>
+
+
+<!-- QUICK ACTIONS -->
+
+<section class="section">
+
+    <h2>NGO Actions</h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="icon">🍱</div>
+
+            <h3>Available Food</h3>
+
+            <p>
+                View food donations available for collection.
+            </p>
+
+            <a href="#donations" class="btn">
+                View Donations
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🚚</div>
+
+            <h3>Pickup Requests</h3>
+
+            <p>
+                Manage food pickup requests from donors.
+            </p>
+
+            <a href="#donations" class="btn">
+                Manage Pickups
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">📊</div>
+
+            <h3>Donation History</h3>
+
+            <p>
+                View previously collected food donations.
+            </p>
+
+            <a href="#history" class="btn">
+                View History
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- AVAILABLE DONATIONS -->
+
+<section class="section" id="donations">
+
+    <h2>Available Food Donations</h2>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Food</th>
+                    <th>Quantity</th>
+                    <th>Location</th>
+                    <th>Expiry</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Rice & Curry</td>
+                    <td>10 kg</td>
+                    <td>Chennai</td>
+                    <td>Today</td>
+                    <td>
+                        <button class="accept"
+                                onclick="acceptDonation(this)">
+                            Accept
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Bread</td>
+                    <td>30 packets</td>
+                    <td>Chennai</td>
+                    <td>Tomorrow</td>
+                    <td>
+                        <button class="accept"
+                                onclick="acceptDonation(this)">
+                            Accept
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Vegetables</td>
+                    <td>15 kg</td>
+                    <td>Tambaram</td>
+                    <td>Tomorrow</td>
+                    <td>
+                        <button class="accept"
+                                onclick="acceptDonation(this)">
+                            Accept
+                        </button>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- HISTORY -->
+
+<section class="section" id="history">
+
+    <h2>Recent Collection History</h2>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Food</th>
+                    <th>Quantity</th>
+                    <th>Donor Location</th>
+                    <th>Status</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Rice</td>
+                    <td>5 kg</td>
+                    <td>Chennai</td>
+                    <td class="status">Collected</td>
+                </tr>
+
+                <tr>
+                    <td>Vegetables</td>
+                    <td>8 kg</td>
+                    <td>Tambaram</td>
+                    <td class="status">Collected</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 Food Donation Platform | Together We Can Reduce Food Waste
+    </p>
+
+</footer>
+
+
+<script>
+
+function acceptDonation(button) {
+
+    button.innerText = "Accepted";
+    button.disabled = true;
+
+    button.style.background = "#777";
+
+    alert("Donation accepted successfully! 🎉");
+
+}
+
+</script>
+
+</body>
+</html>
