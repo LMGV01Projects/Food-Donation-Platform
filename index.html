@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Food Donation Platform</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5fff8;
+            color: #222;
+        }
+
+        header {
+            background: #087f5b;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 17px;
+        }
+
+        nav {
+            margin-top: 18px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            min-height: 430px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #e8fff4, #ffffff);
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            color: #087f5b;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #087f5b;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 5px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #055f45;
+        }
+
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .section h2 {
+            color: #087f5b;
+            margin-bottom: 30px;
+            font-size: 30px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 280px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: #087f5b;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            line-height: 1.6;
+        }
+
+        footer {
+            background: #087f5b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h2 {
+                font-size: 30px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 7px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🍱 Food Donation Platform</h1>
+    <p>Share Food • Reduce Waste • Help People</p>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="donate.html">Donate</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h2>Don't Waste Food, Share It ❤️</h2>
+
+        <p>
+            Our Food Donation Platform connects people who have
+            surplus food with NGOs and people who need it.
+            Together, we can reduce food wastage and help our community.
+        </p>
+
+        <a href="donate.html" class="btn">🍱 Donate Food</a>
+        <a href="register.html" class="btn">Create Account</a>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Our Mission</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>🍽️ Reduce Food Waste</h3>
+            <p>
+                Prevent useful food from being wasted by connecting
+                donors with organizations in need.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🤝 Help People</h3>
+            <p>
+                Make surplus food available to people and communities
+                who can benefit from it.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🌱 Protect Environment</h3>
+            <p>
+                Reducing food waste helps create a cleaner and
+                more sustainable environment.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <h2>How It Works</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>1️⃣ Register</h3>
+            <p>Create your account on the platform.</p>
+        </div>
+
+        <div class="card">
+            <h3>2️⃣ Donate</h3>
+            <p>Post information about your surplus food.</p>
+        </div>
+
+        <div class="card">
+            <h3>3️⃣ Connect</h3>
+            <p>NGOs can find the available food and arrange collection.</p>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Food Donation Platform | Reduce Waste • Feed People</p>
+</footer>
+
+</body>
+</html>
