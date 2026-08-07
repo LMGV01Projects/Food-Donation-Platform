@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us - Food Donation Platform</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5fff8;
+            color: #222;
+        }
+
+        header {
+            background: #087f5b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin-bottom: 12px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title h2 {
+            color: #087f5b;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .title p {
+            color: #666;
+        }
+
+        .contact-box {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .info,
+        .form-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .info {
+            width: 320px;
+        }
+
+        .form-box {
+            width: 450px;
+        }
+
+        .info h3,
+        .form-box h3 {
+            color: #087f5b;
+            margin-bottom: 20px;
+        }
+
+        .info p {
+            margin: 18px 0;
+            line-height: 1.6;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #087f5b;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 13px;
+            background: #087f5b;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #055f45;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #087f5b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .info,
+            .form-box {
+                width: 100%;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>🍱 Food Donation Platform</h1>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="donate.html">Donate</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+</header>
+
+
+<div class="container">
+
+    <div class="title">
+
+        <h2>📞 Contact Us</h2>
+
+        <p>
+            Have a question or want to work with us?
+            Send us a message.
+        </p>
+
+    </div>
+
+
+    <div class="contact-box">
+
+        <!-- Contact Information -->
+
+        <div class="info">
+
+            <h3>Get in Touch</h3>
+
+            <p>
+                📍 <strong>Address</strong><br>
+                Food Donation Platform<br>
+                Chennai, Tamil Nadu, India
+            </p>
+
+            <p>
+                📧 <strong>Email</strong><br>
+                fooddonation@example.com
+            </p>
+
+            <p>
+                📞 <strong>Phone</strong><br>
+                +91 98765 43210
+            </p>
+
+            <p>
+                🕒 <strong>Working Hours</strong><br>
+                Monday - Saturday<br>
+                9:00 AM - 6:00 PM
+            </p>
+
+        </div>
+
+
+        <!-- Contact Form -->
+
+        <div class="form-box">
+
+            <h3>Send Us a Message</h3>
+
+            <form id="contactForm">
+
+                <label for="name">Your Name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+
+                <label for="email">Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <label for="subject">Subject</label>
+
+                <input
+                    type="text"
+                    id="subject"
+                    placeholder="Enter subject"
+                    required
+                >
+
+
+                <label for="messageText">Message</label>
+
+                <textarea
+                    id="messageText"
+                    placeholder="Write your message..."
+                    required
+                ></textarea>
+
+
+                <button type="submit">
+                    📩 Send Message
+                </button>
+
+                <div id="message"></div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<footer>
+
+    <p>
+        © 2026 Food Donation Platform | Reduce Waste • Feed People
+    </p>
+
+</footer>
+
+
+<script>
+
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const message = document.getElementById("message");
+
+    message.style.color = "#087f5b";
+
+    message.innerHTML =
+        "✅ Thank you! Your message has been submitted.";
+
+    document.getElementById("contactForm").reset();
+
+});
+
+</script>
+
+</body>
+</html>
