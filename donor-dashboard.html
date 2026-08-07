@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Donor Dashboard - Food Donation Platform</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5fff8;
+            color: #222;
+        }
+
+        /* Header */
+        header {
+            background: #087f5b;
+            color: white;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            font-size: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Welcome */
+        .welcome {
+            padding: 35px 20px 20px;
+            text-align: center;
+        }
+
+        .welcome h2 {
+            color: #087f5b;
+            margin-bottom: 8px;
+        }
+
+        .welcome p {
+            color: #666;
+        }
+
+        /* Statistics */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            width: 210px;
+            padding: 25px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-card .icon {
+            font-size: 35px;
+        }
+
+        .stat-card h3 {
+            color: #087f5b;
+            font-size: 28px;
+            margin: 8px 0;
+        }
+
+        .stat-card p {
+            color: #666;
+        }
+
+        /* Main cards */
+        .section {
+            padding: 30px 20px;
+        }
+
+        .section h2 {
+            text-align: center;
+            color: #087f5b;
+            margin-bottom: 25px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 280px;
+            padding: 25px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .card .icon {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            color: #087f5b;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #087f5b;
+            color: white;
+            padding: 11px 20px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #055f45;
+        }
+
+        /* Recent Donations */
+        .table-container {
+            max-width: 1000px;
+            margin: auto;
+            overflow-x: auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 14px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #087f5b;
+            color: white;
+        }
+
+        .status {
+            color: #087f5b;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #087f5b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                text-align: center;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .stat-card,
+            .card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <h1>🍱 Donor Dashboard</h1>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="donate.html">Donate Food</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Logout</a>
+    </nav>
+
+</header>
+
+
+<!-- WELCOME -->
+
+<section class="welcome">
+
+    <h2>Welcome, Donor! 👋</h2>
+
+    <p>
+        Thank you for helping reduce food wastage and support people in need.
+    </p>
+
+</section>
+
+
+<!-- STATISTICS -->
+
+<section class="stats">
+
+    <div class="stat-card">
+
+        <div class="icon">🍱</div>
+
+        <h3 id="totalDonations">0</h3>
+
+        <p>Total Donations</p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="icon">🤝</div>
+
+        <h3 id="completedDonations">0</h3>
+
+        <p>Completed Donations</p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="icon">⏳</div>
+
+        <h3 id="pendingDonations">0</h3>
+
+        <p>Pending Donations</p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <div class="icon">❤️</div>
+
+        <h3 id="peopleHelped">0</h3>
+
+        <p>People Helped</p>
+
+    </div>
+
+</section>
+
+
+<!-- QUICK ACTIONS -->
+
+<section class="section">
+
+    <h2>Quick Actions</h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="icon">🍱</div>
+
+            <h3>Donate Food</h3>
+
+            <p>
+                Have surplus food? Create a new food donation.
+            </p>
+
+            <a href="donate.html" class="btn">
+                Donate Now
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">📋</div>
+
+            <h3>My Donations</h3>
+
+            <p>
+                View your previous food donations and their status.
+            </p>
+
+            <a href="#recent" class="btn">
+                View Donations
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🤝</div>
+
+            <h3>NGO Support</h3>
+
+            <p>
+                Connect with NGOs and arrange food pickup.
+            </p>
+
+            <a href="ngo-dashboard.html" class="btn">
+                View NGOs
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- RECENT DONATIONS -->
+
+<section class="section" id="recent">
+
+    <h2>Recent Donations</h2>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Food</th>
+                    <th>Quantity</th>
+                    <th>Pickup Address</th>
+                    <th>Status</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="donationTable">
+
+                <tr>
+                    <td>Rice</td>
+                    <td>5 kg</td>
+                    <td>Chennai</td>
+                    <td class="status">Pending</td>
+                </tr>
+
+                <tr>
+                    <td>Bread</td>
+                    <td>20 packets</td>
+                    <td>Chennai</td>
+                    <td class="status">Completed</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 Food Donation Platform | Reduce Waste • Feed People
+    </p>
+
+</footer>
+
+
+<script>
+
+    // Demo dashboard statistics
+
+    document.getElementById("totalDonations").innerText = "2";
+
+    document.getElementById("completedDonations").innerText = "1";
+
+    document.getElementById("pendingDonations").innerText = "1";
+
+    document.getElementById("peopleHelped").innerText = "25";
+
+</script>
+
+</body>
+</html>
