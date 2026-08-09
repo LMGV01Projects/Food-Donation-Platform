@@ -15,224 +15,515 @@
         }
 
         body {
-            background: linear-gradient(135deg, #e8fff4, #ffffff);
+            background: #f4fff8;
             color: #222;
-            min-height: 100vh;
         }
+
+        /* HEADER */
 
         header {
             background: #087f5b;
             color: white;
-            padding: 20px;
-            text-align: center;
+            padding: 18px 30px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            flex-wrap: wrap;
         }
 
         header h1 {
-            margin-bottom: 10px;
+            font-size: 25px;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 10px;
+            margin-left: 18px;
             font-weight: bold;
         }
 
-        .container {
-            max-width: 650px;
-            margin: 40px auto;
-            padding: 30px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+        nav a:hover {
+            text-decoration: underline;
         }
 
-        .container h2 {
+        /* TITLE */
+
+        .title {
             text-align: center;
+            padding: 35px 20px 20px;
+        }
+
+        .title h2 {
             color: #087f5b;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
-        .description {
-            text-align: center;
+        .title p {
             color: #666;
-            margin-bottom: 25px;
         }
 
-        label {
+        /* FORM */
+
+        .form-container {
+            max-width: 700px;
+            margin: 25px auto;
+            padding: 30px;
+
+            background: white;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 4px 18px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
             display: block;
-            margin-top: 15px;
-            margin-bottom: 6px;
+            margin-bottom: 7px;
             font-weight: bold;
         }
 
-        input,
-        textarea,
-        select {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 12px;
+
             border: 1px solid #ccc;
             border-radius: 7px;
+
             font-size: 15px;
         }
 
-        textarea {
-            min-height: 90px;
+        .form-group textarea {
+            height: 100px;
             resize: vertical;
         }
 
-        input:focus,
-        textarea:focus,
-        select:focus {
-            outline: none;
-            border-color: #087f5b;
-        }
-
-        button {
+        .submit-btn {
             width: 100%;
-            margin-top: 25px;
+
             padding: 14px;
+
+            border: none;
+            border-radius: 8px;
+
             background: #087f5b;
             color: white;
-            border: none;
-            border-radius: 7px;
-            font-size: 17px;
+
+            font-size: 16px;
             font-weight: bold;
+
             cursor: pointer;
         }
 
-        button:hover {
+        .submit-btn:hover {
             background: #055f45;
         }
 
-        #message {
-            text-align: center;
-            margin-top: 18px;
-            font-weight: bold;
-        }
+        /* SUCCESS MESSAGE */
 
-        .back {
-            text-align: center;
+        #successMessage {
+            display: none;
+
             margin-top: 20px;
-        }
+            padding: 15px;
 
-        .back a {
+            background: #e7f8ef;
             color: #087f5b;
-            text-decoration: none;
+
+            border-radius: 8px;
+
+            text-align: center;
             font-weight: bold;
         }
+
+        /* FOOTER */
 
         footer {
-            margin-top: 40px;
             background: #087f5b;
             color: white;
+
             text-align: center;
-            padding: 18px;
+
+            padding: 20px;
+
+            margin-top: 40px;
         }
+
+        @media(max-width:600px) {
+
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav {
+                margin-top: 10px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .form-container {
+                width: 92%;
+                padding: 22px;
+            }
+        }
+
     </style>
 </head>
 
 <body>
 
+
+<!-- HEADER -->
+
 <header>
 
-    <h1>🍱 Food Donation Platform</h1>
+    <h1>🍱 Donate Food</h1>
 
     <nav>
-        <a href="index.html">Home</a>
-        <a href="donate.html">Donate</a>
-        <a href="login.html">Login</a>
-        <a href="register.html">Register</a>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="donor-dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="locations.html">
+            Locations
+        </a>
+
+        <a href="history.html">
+            History
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
     </nav>
 
 </header>
 
 
-<div class="container">
+<!-- TITLE -->
 
-    <h2>🍱 Donate Food</h2>
+<section class="title">
 
-    <p class="description">
-        Have extra food? Donate it and help someone in need.
+    <h2>Donate Your Extra Food ❤️</h2>
+
+    <p>
+        Fill in the details below to donate food to people in need.
     </p>
 
+</section>
+
+
+<!-- DONATION FORM -->
+
+<div class="form-container">
 
     <form id="donationForm">
 
-        <label for="donorName">Donor Name</label>
 
-        <input
-            type="text"
-            id="donorName"
-            name="donorName"
-            placeholder="Enter your name"
-            required
-        >
+        <!-- DONOR NAME -->
 
+        <div class="form-group">
 
-        <label for="foodName">Food Name</label>
+            <label>
+                Donor Name
+            </label>
 
-        <input
-            type="text"
-            id="foodName"
-            name="foodName"
-            placeholder="Example: Rice, Bread, Vegetables"
-            required
-        >
+            <input
+                type="text"
+                id="donorName"
+                placeholder="Enter your name"
+                required>
+
+        </div>
 
 
-        <label for="foodType">Food Type</label>
+        <!-- PHONE -->
 
-        <select id="foodType" name="foodType" required>
+        <div class="form-group">
 
-            <option value="">Select food type</option>
-            <option value="Cooked Food">Cooked Food</option>
-            <option value="Packaged Food">Packaged Food</option>
-            <option value="Fruits">Fruits</option>
-            <option value="Vegetables">Vegetables</option>
-            <option value="Bakery Items">Bakery Items</option>
-            <option value="Other">Other</option>
+            <label>
+                Phone Number
+            </label>
 
-        </select>
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter phone number"
+                pattern="[0-9]{10}"
+                required>
 
-
-        <label for="quantity">Quantity</label>
-
-        <input
-            type="text"
-            id="quantity"
-            name="quantity"
-            placeholder="Example: 10 packets / 5 kg"
-            required
-        >
+        </div>
 
 
-        <label for="expiry">Food Expiry / Best Before</label>
+        <!-- FOOD NAME -->
 
-        <input
-            type="datetime-local"
-            id="expiry"
-            name="expiry"
-            required
-        >
+        <div class="form-group">
 
+            <label>
+                Food Name
+            </label>
 
-        <label for="phone">Contact Number</label>
+            <input
+                type="text"
+                id="foodName"
+                placeholder="Example: Rice and Curry"
+                required>
 
-        <input
-            type="tel"
-            id="phone"
-            name="phone"
-            placeholder="Enter your phone number"
-            required
-        >
+        </div>
 
 
-        <label for="address">Pickup Address</label>
+        <!-- FOOD TYPE -->
 
-        <textarea
-            id="address"
-            name="address"
-            placeholder="Enter the address where the NGO can collect the food"
-            required
-        ></textarea>
+        <div class="form-group">
+
+            <label>
+                Food Type
+            </label>
+
+            <select id="foodType" required>
+
+                <option value="">
+                    Select Food Type
+                </option>
+
+                <option>
+                    Cooked Food
+                </option>
+
+                <option>
+                    Fruits
+                </option>
+
+                <option>
+                    Vegetables
+                </option>
+
+                <option>
+                    Packaged Food
+                </option>
+
+                <option>
+                    Bakery Items
+                </option>
+
+                <option>
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- QUANTITY -->
+
+        <div class="form-group">
+
+            <label>
+                Quantity
+            </label>
+
+            <input
+                type="text"
+                id="quantity"
+                placeholder="Example: 10 kg / 20 packets"
+                required>
+
+        </div>
+
+
+        <!-- EXPIRY -->
+
+        <div class="form-group">
+
+            <label>
+                Food Expiry Date & Time
+            </label>
+
+            <input
+                type="datetime-local"
+                id="expiry"
+                required>
+
+        </div>
+
+
+        <!-- PICKUP ADDRESS -->
+
+        <div class="form-group">
+
+            <label>
+                Pickup Address
+            </label>
+
+            <textarea
+                id="address"
+                placeholder="Enter the food pickup address"
+                required></textarea>
+
+        </div>
+
+
+        <!-- LOCATION -->
+
+        <div class="form-group">
+
+            <label>
+                Select Location
+            </label>
+
+            <select id="location" required>
+
+                <option value="">
+                    Select Location
+                </option>
+
+                <option>
+                    Adyar
+                </option>
+
+                <option>
+                    Guindy
+                </option>
+
+                <option>
+                    Ramapuram
+                </option>
+
+                <option>
+                    Anna Nagar
+                </option>
+
+                <option>
+                    Velachery
+                </option>
+
+                <option>
+                    Tambaram
+                </option>
+
+                <option>
+                    Karapakkam
+                </option>
+
+                <option>
+                    Padoor
+                </option>
+
+                <option>
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- ADDITIONAL MESSAGE -->
+
+        <div class="form-group">
+
+            <label>
+                Additional Information
+            </label>
+
+            <textarea
+                id="message"
+                placeholder="Any additional information about the food..."></textarea>
+
+        </div>
+
+
+        <!-- SUBMIT -->
+
+        <button
+            type="submit"
+            class="submit-btn">
+
+            🍱 Submit Food Donation
+
+        </button>
+
+
+        <!-- SUCCESS -->
+
+        <div id="successMessage">
+
+            ✅ Donation submitted successfully!
+
+            <br><br>
+
+            Thank you for helping reduce food waste. ❤️
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 Food Donation Platform |
+        Reduce Waste • Feed People
+    </p>
+
+</footer>
+
+
+<script>
+
+    const form =
+        document.getElementById("donationForm");
+
+    const successMessage =
+        document.getElementById("successMessage");
+
+
+    form.addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            successMessage.style.display =
+                "block";
+
+
+            form.reset();
+
+
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: "smooth"
+            });
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
