@@ -1,151 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
+    <title>Donation History - Food Donation Platform</title>
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-<title>Donation History</title>
+        body {
+            background: #f4fff8;
+            color: #222;
+        }
 
-<style>
+        /* HEADER */
+        header {
+            background: #087f5b;
+            color: white;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4fff8;
-}
+        header h1 {
+            font-size: 25px;
+        }
 
-header {
-    background: #087f5b;
-    color: white;
-    padding: 18px;
-    text-align: center;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 18px;
+            font-weight: bold;
+        }
 
-.container {
-    max-width: 1100px;
-    margin: 30px auto;
-    padding: 20px;
-}
+        nav a:hover {
+            text-decoration: underline;
+        }
 
-.donation {
-    background: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    box-shadow: 0 3px 12px rgba(0,0,0,.1);
-}
+        /* TITLE */
+        .title {
+            text-align: center;
+            padding: 35px 20px 20px;
+        }
 
-.donation h3 {
-    color: #087f5b;
-}
+        .title h2 {
+            color: #087f5b;
+            margin-bottom: 8px;
+        }
 
-.status {
-    color: #d97706;
-    font-weight: bold;
-}
+        .title p {
+            color: #666;
+        }
 
-</style>
+        /* SUMMARY */
+        .summary {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
 
+        .summary-card {
+            background: white;
+            width: 210px;
+            padding: 22px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .summary-card .icon {
+            font-size: 32px;
+        }
+
+        .summary-card h3 {
+            color: #087f5b;
+            font-size: 27px;
+            margin: 8px 0;
+        }
+
+        .summary-card p {
+            color: #666;
+        }
+
+        /* TABLE SECTION */
+        .section {
+            padding: 30px 20px;
+        }
+
+        .section h2 {
+            text-align: center;
+            color: #087f5b;
+            margin-bottom: 25px;
+        }
+
+        .table-container {
+            max-width: 1100px;
+            margin: auto;
+            overflow-x: auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 14px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #087f5b;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f1fff8;
+        }
+
+        /* STATUS */
+        .completed {
+            color: #087f5b;
+            font-weight: bold;
+        }
+
+        .pending {
+            color: #d97706;
+            font-weight: bold;
+        }
+
+        .cancelled {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        /* BUTTON */
+        .btn {
+            display: inline-block;
+            background: #087f5b;
+            color: white;
+            padding: 11px 20px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #055f45;
+        }
+
+        .button-area {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #087f5b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                justify-content: center;
+                text-align: center;
+                gap: 15px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .summary-card {
+                width: 90%;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header>
 
-<h1>📋 Donation History</h1>
+    <h1>📋 Donation History</h1>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="donor-dashboard.html">Dashboard</a>
+        <a href="donate.html">Donate Food</a>
+        <a href="contact.html">Contact</a>
+    </nav>
 
 </header>
 
 
-<div class="container">
+<!-- TITLE -->
 
-<div id="history"></div>
+<section class="title">
 
-</div>
+    <h2>My Donation History</h2>
 
+    <p>
+        Track all your previous food donations and their status.
+    </p>
 
-<script>
-
-const history =
-document.getElementById("history");
-
-const donations =
-JSON.parse(localStorage.getItem("donations")) || [];
+</section>
 
 
-if (donations.length === 0) {
+<!-- SUMMARY -->
 
-    history.innerHTML =
-    "<h2>No donations found.</h2>";
+<section class="summary">
 
-}
+    <div class="summary-card">
 
+        <div class="icon">🍱</div>
 
-donations.forEach(function(donation) {
+        <h3>5</h3>
 
-    history.innerHTML += `
-
-    <div class="donation">
-
-        <h3>
-            🍱 ${donation.foodName}
-        </h3>
-
-        <p>
-            <b>Donor:</b>
-            ${donation.donorName}
-        </p>
-
-        <p>
-            <b>Food Type:</b>
-            ${donation.foodType}
-        </p>
-
-        <p>
-            <b>Quantity:</b>
-            ${donation.quantity}
-        </p>
-
-        <p>
-            <b>Location:</b>
-            ${donation.location}
-        </p>
-
-        <p>
-            <b>Pickup Address:</b>
-            ${donation.address}
-        </p>
-
-        <p>
-            <b>Expiry:</b>
-            ${donation.expiry}
-        </p>
-
-        <p>
-            <b>Status:</b>
-            <span class="status">
-                ${donation.status}
-            </span>
-        </p>
-
-        <p>
-            <b>Submitted:</b>
-            ${donation.date}
-        </p>
+        <p>Total Donations</p>
 
     </div>
 
-    `;
 
-});
+    <div class="summary-card">
 
-</script>
+        <div class="icon">✅</div>
+
+        <h3>3</h3>
+
+        <p>Completed</p>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <div class="icon">⏳</div>
+
+        <h3>1</h3>
+
+        <p>Pending</p>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <div class="icon">❤️</div>
+
+        <h3>60</h3>
+
+        <p>People Helped</p>
+
+    </div>
+
+</section>
+
+
+<!-- HISTORY TABLE -->
+
+<section class="section">
+
+    <h2>Donation Records</h2>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Date</th>
+                    <th>Food</th>
+                    <th>Quantity</th>
+                    <th>Pickup Location</th>
+                    <th>NGO</th>
+                    <th>Status</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>05-08-2026</td>
+                    <td>Rice & Curry</td>
+                    <td>10 kg</td>
+                    <td>Chennai</td>
+                    <td>Helping Hands NGO</td>
+                    <td class="completed">Completed</td>
+                </tr>
+
+                <tr>
+                    <td>03-08-2026</td>
+                    <td>Bread</td>
+                    <td>20 packets</td>
+                    <td>Tambaram</td>
+                    <td>Food Care Foundation</td>
+                    <td class="completed">Completed</td>
+                </tr>
+
+                <tr>
+                    <td>01-08-2026</td>
+                    <td>Vegetables</td>
+                    <td>8 kg</td>
+                    <td>Chennai</td>
+                    <td>Helping Hands NGO</td>
+                    <td class="completed">Completed</td>
+                </tr>
+
+                <tr>
+                    <td>07-08-2026</td>
+                    <td>Fruits</td>
+                    <td>5 kg</td>
+                    <td>Chennai</td>
+                    <td>Food Care Foundation</td>
+                    <td class="pending">Pending</td>
+                </tr>
+
+                <tr>
+                    <td>28-07-2026</td>
+                    <td>Cooked Food</td>
+                    <td>15 kg</td>
+                    <td>Chennai</td>
+                    <td>Helping Hands NGO</td>
+                    <td class="cancelled">Cancelled</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <div class="button-area">
+
+        <a href="donate.html" class="btn">
+            🍱 Make New Donation
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 Food Donation Platform | Reduce Waste • Feed People
+    </p>
+
+</footer>
 
 </body>
-
 </html>
-
