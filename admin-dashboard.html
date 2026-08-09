@@ -1,618 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Admin Dashboard - Food Donation Platform</title>
+<meta charset="UTF-8">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-        body {
-            background: #f5f6fa;
-            color: #222;
-        }
+<title>Admin Dashboard</title>
 
-        /* HEADER */
-        header {
-            background: #20232a;
-            color: white;
-            padding: 18px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+<style>
 
-        header h1 {
-            font-size: 25px;
-        }
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #f4fff8;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 18px;
-            font-weight: bold;
-        }
+header {
+    background: #087f5b;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
 
-        nav a:hover {
-            text-decoration: underline;
-        }
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+}
 
-        /* WELCOME */
-        .welcome {
-            text-align: center;
-            padding: 35px 20px 20px;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
 
-        .welcome h2 {
-            color: #20232a;
-            margin-bottom: 8px;
-        }
+th {
+    background: #087f5b;
+    color: white;
+}
 
-        .welcome p {
-            color: #666;
-        }
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
 
-        /* STATISTICS */
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            padding: 20px;
-        }
+.status {
+    font-weight: bold;
+}
 
-        .stat-card {
-            width: 210px;
-            background: white;
-            padding: 25px;
-            text-align: center;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
+@media(max-width:700px) {
 
-        .stat-card .icon {
-            font-size: 35px;
-        }
+    table {
+        font-size: 12px;
+    }
 
-        .stat-card h3 {
-            font-size: 28px;
-            margin: 8px 0;
-            color: #20232a;
-        }
+    th, td {
+        padding: 7px;
+    }
 
-        .stat-card p {
-            color: #666;
-        }
+}
 
-        /* SECTION */
-        .section {
-            padding: 30px 20px;
-        }
+</style>
 
-        .section h2 {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #20232a;
-        }
-
-        /* CARDS */
-        .cards {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            width: 280px;
-            background: white;
-            padding: 25px;
-            text-align: center;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .card .icon {
-            font-size: 45px;
-            margin-bottom: 12px;
-        }
-
-        .card h3 {
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 18px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: #20232a;
-            color: white;
-            padding: 11px 20px;
-            border-radius: 7px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .btn:hover {
-            background: #000;
-        }
-
-        /* TABLE */
-        .table-container {
-            max-width: 1100px;
-            margin: auto;
-            overflow-x: auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 14px;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-        }
-
-        th {
-            background: #20232a;
-            color: white;
-        }
-
-        /* BUTTONS */
-        .approve {
-            background: #198754;
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .remove {
-            background: #dc3545;
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-
-        .approve:hover {
-            background: #146c43;
-        }
-
-        .remove:hover {
-            background: #bb2d3b;
-        }
-
-        .status {
-            font-weight: bold;
-        }
-
-        /* FOOTER */
-        footer {
-            background: #20232a;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
-
-        @media (max-width: 600px) {
-
-            header {
-                justify-content: center;
-                text-align: center;
-                gap: 15px;
-            }
-
-            nav a {
-                display: inline-block;
-                margin: 5px;
-            }
-
-            .stat-card,
-            .card {
-                width: 90%;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <header>
 
-    <h1>⚙️ Admin Dashboard</h1>
+<h1>⚙️ Admin Dashboard</h1>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="donor-dashboard.html">Donors</a>
-        <a href="ngo-dashboard.html">NGOs</a>
-        <a href="login.html">Logout</a>
-    </nav>
+<p>All Food Donations</p>
 
 </header>
 
 
-<!-- WELCOME -->
+<div class="container">
 
-<section class="welcome">
+<table>
 
-    <h2>Welcome, Administrator 👋</h2>
+<thead>
 
-    <p>
-        Manage donors, NGOs, food donations and platform activities.
-    </p>
+<tr>
 
-</section>
+<th>Donor</th>
 
+<th>Food</th>
 
-<!-- STATISTICS -->
+<th>Type</th>
 
-<section class="stats">
+<th>Quantity</th>
 
-    <div class="stat-card">
+<th>Location</th>
 
-        <div class="icon">👥</div>
+<th>Expiry</th>
 
-        <h3>150</h3>
+<th>Status</th>
 
-        <p>Total Users</p>
+</tr>
 
-    </div>
+</thead>
 
+<tbody id="adminData">
 
-    <div class="stat-card">
+</tbody>
 
-        <div class="icon">🍱</div>
+</table>
 
-        <h3>85</h3>
-
-        <p>Total Donations</p>
-
-    </div>
-
-
-    <div class="stat-card">
-
-        <div class="icon">🤝</div>
-
-        <h3>25</h3>
-
-        <p>Registered NGOs</p>
-
-    </div>
-
-
-    <div class="stat-card">
-
-        <div class="icon">❤️</div>
-
-        <h3>420</h3>
-
-        <p>People Helped</p>
-
-    </div>
-
-</section>
-
-
-<!-- ADMIN ACTIONS -->
-
-<section class="section">
-
-    <h2>Admin Controls</h2>
-
-    <div class="cards">
-
-        <div class="card">
-
-            <div class="icon">👥</div>
-
-            <h3>Manage Users</h3>
-
-            <p>
-                View and manage registered donors and users.
-            </p>
-
-            <a href="#users" class="btn">
-                View Users
-            </a>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="icon">🤝</div>
-
-            <h3>Manage NGOs</h3>
-
-            <p>
-                Review registered NGOs and their activities.
-            </p>
-
-            <a href="#ngos" class="btn">
-                View NGOs
-            </a>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="icon">🍱</div>
-
-            <h3>Manage Donations</h3>
-
-            <p>
-                Monitor all food donations submitted by donors.
-            </p>
-
-            <a href="#donations" class="btn">
-                View Donations
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- USERS -->
-
-<section class="section" id="users">
-
-    <h2>Registered Users</h2>
-
-    <div class="table-container">
-
-        <table>
-
-            <thead>
-
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr>
-                    <td>Arun</td>
-                    <td>arun@example.com</td>
-                    <td>Donor</td>
-                    <td class="status">Active</td>
-                    <td>
-                        <button class="remove"
-                                onclick="removeUser(this)">
-                            Remove
-                        </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Priya</td>
-                    <td>priya@example.com</td>
-                    <td>Donor</td>
-                    <td class="status">Active</td>
-                    <td>
-                        <button class="remove"
-                                onclick="removeUser(this)">
-                            Remove
-                        </button>
-                    </td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-</section>
-
-
-<!-- NGOs -->
-
-<section class="section" id="ngos">
-
-    <h2>NGO Management</h2>
-
-    <div class="table-container">
-
-        <table>
-
-            <thead>
-
-                <tr>
-                    <th>NGO Name</th>
-                    <th>Location</th>
-                    <th>Contact</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr>
-                    <td>Helping Hands NGO</td>
-                    <td>Chennai</td>
-                    <td>9876543210</td>
-                    <td class="status">Pending</td>
-                    <td>
-                        <button class="approve"
-                                onclick="approveNGO(this)">
-                            Approve
-                        </button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Food Care Foundation</td>
-                    <td>Tambaram</td>
-                    <td>9876501234</td>
-                    <td class="status">Approved</td>
-                    <td>
-                        <button class="remove"
-                                onclick="removeNGO(this)">
-                            Remove
-                        </button>
-                    </td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-</section>
-
-
-<!-- DONATIONS -->
-
-<section class="section" id="donations">
-
-    <h2>Food Donation Management</h2>
-
-    <div class="table-container">
-
-        <table>
-
-            <thead>
-
-                <tr>
-                    <th>Donor</th>
-                    <th>Food</th>
-                    <th>Quantity</th>
-                    <th>Location</th>
-                    <th>Status</th>
-                </tr>
-
-            </thead>
-
-            <tbody>
-
-                <tr>
-                    <td>Arun</td>
-                    <td>Rice</td>
-                    <td>10 kg</td>
-                    <td>Chennai</td>
-                    <td class="status">Collected</td>
-                </tr>
-
-                <tr>
-                    <td>Priya</td>
-                    <td>Bread</td>
-                    <td>25 packets</td>
-                    <td>Tambaram</td>
-                    <td class="status">Pending</td>
-                </tr>
-
-                <tr>
-                    <td>Kumar</td>
-                    <td>Vegetables</td>
-                    <td>15 kg</td>
-                    <td>Chennai</td>
-                    <td class="status">Collected</td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-</section>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-    <p>
-        © 2026 Food Donation Platform | Admin Panel
-    </p>
-
-</footer>
+</div>
 
 
 <script>
 
-function approveNGO(button) {
+const table =
+document.getElementById("adminData");
 
-    button.innerText = "Approved";
-
-    button.disabled = true;
-
-    button.style.background = "#777";
-
-    alert("NGO approved successfully! ✅");
-}
+const donations =
+JSON.parse(localStorage.getItem("donations")) || [];
 
 
-function removeUser(button) {
+if (donations.length === 0) {
 
-    let confirmRemove =
-        confirm("Are you sure you want to remove this user?");
+    table.innerHTML = `
 
-    if (confirmRemove) {
+    <tr>
 
-        button.closest("tr").remove();
+        <td colspan="7">
+            No donations available
+        </td>
 
-        alert("User removed successfully.");
+    </tr>
 
-    }
+    `;
 
 }
 
 
-function removeNGO(button) {
+donations.forEach(function(donation) {
 
-    let confirmRemove =
-        confirm("Are you sure you want to remove this NGO?");
+    table.innerHTML += `
 
-    if (confirmRemove) {
+    <tr>
 
-        button.closest("tr").remove();
+        <td>
+            ${donation.donorName}
+        </td>
 
-        alert("NGO removed successfully.");
+        <td>
+            ${donation.foodName}
+        </td>
 
-    }
+        <td>
+            ${donation.foodType}
+        </td>
 
-}
+        <td>
+            ${donation.quantity}
+        </td>
+
+        <td>
+            ${donation.location}
+        </td>
+
+        <td>
+            ${donation.expiry}
+        </td>
+
+        <td class="status">
+            ${donation.status}
+        </td>
+
+    </tr>
+
+    `;
+
+});
 
 </script>
 
 </body>
+
 </html>
+
+    
+
+       
+  
+
+           
